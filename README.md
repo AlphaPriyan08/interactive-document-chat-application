@@ -1,0 +1,54 @@
+# Interactive Document Chat Application (RAG)
+
+## Overview
+
+This project is a sophisticated, interactive chatbot built with Streamlit that allows users to upload multiple documents (PDF, DOCX, TXT) and have a conversation about their content. The application leverages a powerful, open-source Retrieval-Augmented Generation (RAG) pipeline to provide answers that are grounded in the provided text, ensuring accuracy and minimizing hallucinations.
+
+The backend is architected using LangChain and is powered by the high-speed Llama 3 model via the Groq API, making the chat experience incredibly fast and responsive. This project was developed as part of the Generative AI August 2024 Task and represents a robust, production-ready implementation of the core requirements.
+
+## Live Demo
+
+<!-- 
+ACTION: After you deploy on Streamlit Community Cloud, replace this line with your actual URL. 
+For example: [You can access the live, deployed application here.](https://your-app-name.streamlit.app/)
+-->
+**[A link to the live application will be added here upon deployment.]** 
+
+## Features
+
+-   **Multi-File Upload**: Supports PDF, DOCX, and TXT formats simultaneously.
+-   **Interactive Chat Interface**: A clean and intuitive chat window powered by Streamlit.
+-   **Robust RAG Pipeline**: Implements a reliable, linear RAG chain using the latest LangChain components (`create_retrieval_chain`) for optimal performance.
+-   **View Sources**: Each answer is accompanied by an expandable section showing the exact text chunks from the source documents that were used to generate the response, building user trust.
+-   **High-Speed LLM**: Utilizes the `llama3-8b-8192` model via the Groq API for near-instantaneous response times.
+-   **Secure & Deployable**: Uses a dual-method for API key management (`.env` for local development, Streamlit Secrets for cloud deployment), ensuring no keys are ever exposed in the repository.
+-   **Enhanced User Experience**: Features a multi-step progress bar during document processing to provide clear feedback to the user on slow operations like embedding calculation.
+
+## System Architecture
+
+The application follows a classic and robust RAG architecture, designed for reliability and performance.
+
+```plaintext
++------------------+     +------------------------+      +-------------------+
+|  User Uploads    |---->|   Load & Chunk Docs    |----->| Create VectorDB   |
+| (PDF, DOCX, TXT) |     | (Recursive Splitter)   |      | (FAISS + MiniLM)  |
++------------------+     +------------------------+      +---------+---------+
+                                                                  |
+                                                                  | (Vector Store Ready)
+                                                                  |
++------------------+     +------------------------+      +--------v---------+
+|   User Question  |---->|   Retrieve Relevant    |----->|  Stuff Context   |
+|   (Chat Input)   |     |    Document Chunks     |      |   into Prompt    |
++------------------+     +------------------------+      +--------+---------+
+                                                                  |
+                                                                  |
+                                                      +-----------v----------+
+                                                      |   Generate Answer    |
+                                                      |  (Groq Llama 3 LLM)  |
+                                                      +-----------+----------+
+                                                                  |
+                                                                  V
++------------------+                                  +----------------------+
+|  Display Answer  |<----------------------------------|  Answer + Sources   |
+|   & Sources      |                                  |   (Final Result)     |
++------------------+                                  +----------------------+

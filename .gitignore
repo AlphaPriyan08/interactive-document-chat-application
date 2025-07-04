@@ -1,0 +1,57 @@
+# -----------------------------------------------------------------------------
+# Python / Streamlit / AI Project .gitignore
+# -----------------------------------------------------------------------------
+
+# --- Secrets ---
+# CRITICAL: Prevent API keys and other secrets from ever being committed.
+.env
+*.env
+.env.*
+
+# Also ignore Streamlit's local secrets file as a safety measure.
+.streamlit/secrets.toml
+
+
+# --- Python Virtual Environments ---
+# Ignore the virtual environment folder to keep the repository lightweight
+# and environment-agnostic.
+venv/
+.venv/
+/venv
+/.venv
+/env
+env/
+
+
+# --- Application-Specific Ignores ---
+# Ignore the folder for temporary user uploads created by the app at runtime.
+uploads/
+
+
+# --- Python Cache & Bytecode ---
+# Ignore compiled Python files and cache folders.
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+
+# --- IDE / Editor specific files ---
+# Ignore configuration files from common editors to keep the repo clean.
+.vscode/
+.idea/
+*.swp
+
+
+# --- OS-specific files ---
+# Ignore metadata files created by macOS and Windows.
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
