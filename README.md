@@ -8,11 +8,7 @@ The backend is architected using LangChain and is powered by the high-speed Llam
 
 ## Live Demo
 
-<!-- 
-ACTION: After you deploy on Streamlit Community Cloud, replace this line with your actual URL. 
-For example: [You can access the live, deployed application here.](https://your-app-name.streamlit.app/)
--->
-**[A link to the live application will be added here upon deployment.]** 
+**[Streamlit Demo Link]**(https://interactive-document-chat-application.streamlit.app/)
 
 ## Features
 
@@ -77,14 +73,14 @@ Follow these steps to run the application on your local machine.
 
 1.  **Clone the repository:**
     ```bash
-    git clone [Your GitHub Repo URL]
-    cd [your-repo-name]
+    git clone https://github.com/AlphaPriyan08/interactive-document-chat-application
+    cd interactive-document-chat-application
     ```
 
 2.  **Create and activate a Python virtual environment:**
     ```bash
     python -m venv venv
-    source venv/bin/activate  # On Windows, use: venv\Scripts\activate
+    venv\Scripts\activate
     ```
 
 3.  **Install the required dependencies:**
