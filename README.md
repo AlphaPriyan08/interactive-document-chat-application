@@ -1,4 +1,4 @@
-# Interactive Document Chat Application (RAG)
+# 📄 Interactive Document Chat Application (RAG)
 
 ## Overview
 
@@ -8,7 +8,7 @@ The backend is architected using LangChain and is powered by the high-speed Llam
 
 ## Live Demo
 
-**[Streamlit Demo Link]**(https://interactive-document-chat-application.streamlit.app/)
+**[Streamlit Demo Link](https://interactive-document-chat-application.streamlit.app/)**
 
 ## Features
 
