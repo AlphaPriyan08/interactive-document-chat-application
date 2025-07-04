@@ -52,3 +52,60 @@ The application follows a classic and robust RAG architecture, designed for reli
 |  Display Answer  |<----------------------------------|  Answer + Sources   |
 |   & Sources      |                                  |   (Final Result)     |
 +------------------+                                  +----------------------+
+
+```
+
+1.  **Document Processing**: Uploaded files are loaded, parsed, and split into uniform text chunks.
+2.  **Vectorization**: Each chunk is converted into a numerical vector using a `Sentence-Transformers` model and stored in an in-memory FAISS vector database.
+3.  **Retrieval**: When a user asks a question, the application retrieves the most relevant document chunks from the vector database.
+4.  **Augmentation**: The retrieved chunks are "stuffed" into a prompt along with the user's question.
+5.  **Generation**: The complete prompt is sent to the Llama 3 model via the Groq API, which generates a final answer grounded in the provided context.
+6.  **Citation**: The final answer and the source chunks are returned to the UI for the user to review.
+
+## Tech Stack
+
+-   **Application Framework**: Streamlit
+-   **Core AI Logic**: LangChain
+-   **LLM Provider**: Groq (Llama 3 8B)
+-   **Embedding Model**: `all-MiniLM-L6-v2` (from Hugging Face)
+-   **Vector Store**: FAISS (In-memory)
+-   **Document Loaders**: PyPDF, Docx2Txt
+
+## Setup and Installation
+
+Follow these steps to run the application on your local machine.
+
+1.  **Clone the repository:**
+    ```bash
+    git clone [Your GitHub Repo URL]
+    cd [your-repo-name]
+    ```
+
+2.  **Create and activate a Python virtual environment:**
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # On Windows, use: venv\Scripts\activate
+    ```
+
+3.  **Install the required dependencies:**
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+4.  **Create a secrets file:**
+    -   Create a file named `.env` in the root of your project directory.
+    -   Sign up for a free Groq API key at [console.groq.com](https://console.groq.com/).
+    -   Add your API key to the `.env` file like this:
+        ```
+        GROQ_API_KEY="gsk_...your...key...here"
+        ```
+
+## How to Run
+
+Once the setup is complete, run the following command in your terminal:
+
+```bash
+streamlit run app.py
+```
+
+This will launch the application in your default web browser.
